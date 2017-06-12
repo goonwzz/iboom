@@ -1,0 +1,15 @@
+@white: #FFF;
+@split-line-color: #E5E5E5;
+@dialog-title-background-color: #F7F7F7;
+@app-color: red;
+@demo-color: green;
+
+// 字体
+@font-xsmall: 1rem; //20号
+@font-msmall: 1.1rem; //22号
+@font-small: 1.2rem; //24
+@font-media: 1.3rem; //26
+@font-large: 1.4rem; //28
+@font-xlarge: 1.5rem; //30
+@font-xxlarge: 1.6rem; //32号
+@font-xxxlarge: 2rem; //40号
