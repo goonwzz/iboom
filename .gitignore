@@ -29,17 +29,3 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-# Bower
-bower_components/
-
-# ignore generate middle styles
-app/styles/*.css
-app/styles/common/*.css
-app/styles/study/*.css
-app/styles/course/*.css
-app/styles/common/questionpreview/*.css
-
-typings
-
-# personal dev config
-website.json
