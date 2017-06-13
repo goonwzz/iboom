@@ -1,7 +1,7 @@
 module.exports = {
     childRoutes: [{
         path: '/',
-        component: require('Components/www').default,
+        component: require('Pages/index').default,
         childRoutes: [
             require('./demo'),
         ]

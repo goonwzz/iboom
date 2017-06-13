@@ -1,4 +1,4 @@
-import 'Styles/_reset.less'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import useBasename from 'history/lib/useBasename'

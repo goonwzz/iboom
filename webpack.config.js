@@ -1,8 +1,12 @@
 var path = require('path')
     , ExtractTextPlugin = require('extract-text-webpack-plugin')
-    , srcPath = path.resolve(__dirname, './', 'app')
+    , srcPath = path.resolve(__dirname, './', 'app');
 module.exports = {
     entry: `${srcPath}/website/www.js`,
+    output: {
+        path: path.join(__dirname, '/dist'),
+        filename: 'bundle.js'
+    },
     devServer: {
         disableHostCheck: true,
         contentBase: srcPath,
@@ -23,12 +27,8 @@ module.exports = {
             }
         }
     },
-    output: {
-        path: path.join(__dirname, '/dist'),
-        filename: 'bundle.js'
-    },
     resolve: {
-        extensions: ['.js', '.jsx', '.less', '.csm'],
+        extensions: ['', '.js', '.jsx', '.less', '.csm'],
         alias: {
             Routes: `${srcPath}/routes`,
             Containers: `${srcPath}/container`,
@@ -41,8 +41,8 @@ module.exports = {
             {test: /\.(json)$/, include: srcPath, loader: 'json-loader'},
             {
                 test: /\.(js|jsx)$/,
-                exclude: /(node_modules|aliyun-sdk)/,
-                loader: ['babel-loader']
+                exclude: /(node_modules)/,
+                loader: 'babel-loader'
             },
             {
                 test: /\.csm$/,

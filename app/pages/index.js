@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "Styles/app.csm";
 
 class Index extends React.Component {
 
@@ -14,7 +13,7 @@ class Index extends React.Component {
 
     render() {
 
-        return (<div className={styles.app}>
+        return (<div>
             {this.props.children || <div>index</div>}
         </div>)
     }
