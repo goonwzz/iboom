@@ -1,10 +1,10 @@
-@import "./_global.csm";
+
 
 .app {
-  color: @app-color;
-  background-color: @split-line-color;
+  color: red;
+
 }
 
 .demo {
-  color: @demo-color;
+  color: yellow;
 }

@@ -1,11 +1,10 @@
 var path = require('path')
     , ExtractTextPlugin = require('extract-text-webpack-plugin')
-    , srcPath = path.resolve(__dirname, './', 'app')
+    , srcPath = path.resolve(__dirname, 'app')
     , webpack = require('webpack')
     , HtmlWebpackPlugin = require('html-webpack-plugin')
-    , ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = {
-    entry: {app: `${srcPath}/website/www.js`},
+    entry: {www: `${srcPath}/website/www.js`},
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].js',
@@ -14,7 +13,7 @@ module.exports = {
     },
     devServer: {
         disableHostCheck: true,
-        contentBase: srcPath,
+        contentBase: path.resolve(__dirname, 'dist'),
         historyApiFallback: true,
         hot: true,
         port: 8810,
@@ -41,7 +40,6 @@ module.exports = {
             Pages: `${srcPath}/pages`,
         },
     },
-    devtool: 'inline-source-map',
     cache: true,
     debug: true,
     https: true,
@@ -59,8 +57,8 @@ module.exports = {
         //new webpack.NoErrorsPlugin(),
         new HtmlWebpackPlugin({
             favicon: path.resolve(srcPath, 'favicon.ico'),
-            filename: 'www.html',
-            chunks: ['app', 'common'],
+            filename: 'website/www.html',
+            chunks: ['www', 'common'],
             template: path.resolve(srcPath, 'website/www.html')
         }),
         new webpack.ProvidePlugin({
@@ -81,14 +79,12 @@ module.exports = {
             {
                 test: /\.csm$/,
                 //css-modules name=文件名 local--样式名 hash:base64:8 hash8
-                loader: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: 'css-loader?modules&localIdentName=[name]--[local]--[hash:base64:8]!less-loader'
-                })
+                loader: ExtractTextPlugin.extract('style-loader','css-loader?modules&localIdentName=[name]--[local]--[hash:base64:8]!less-loader')
             },
+            {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader!less-loader'})
+                loader: ExtractTextPlugin.extract('style-loader',  'css-loader!less-loader')
 
             }
         ]

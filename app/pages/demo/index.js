@@ -1,5 +1,6 @@
 import React from "react";
-
+import styles from "Styles/app.csm";
+import {Link} from "react-router";
 class Demo extends React.Component {
 
     constructor(props) {
@@ -13,8 +14,8 @@ class Demo extends React.Component {
 
     render() {
 
-        return (<div>
-            demo
+        return (<div className={styles.demo}>
+            <Link to="/">demo</Link>
         </div>)
     }
 

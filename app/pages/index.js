@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router";
 
 class Index extends React.Component {
 
@@ -14,7 +15,7 @@ class Index extends React.Component {
     render() {
 
         return (<div>
-            {this.props.children || <div>index</div>}
+            {this.props.children || <div><Link to="/demo">index</Link></div>}
         </div>)
     }
 
