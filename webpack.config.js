@@ -1,11 +1,16 @@
 var path = require('path')
     , ExtractTextPlugin = require('extract-text-webpack-plugin')
-    , srcPath = path.resolve(__dirname, './', 'app');
+    , srcPath = path.resolve(__dirname, './', 'app')
+    , webpack = require('webpack')
+    , HtmlWebpackPlugin = require('html-webpack-plugin')
+    , ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = {
-    entry: `${srcPath}/website/www.js`,
+    entry: {app: `${srcPath}/website/www.js`},
     output: {
-        path: path.join(__dirname, '/dist'),
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'js/[name].js',
+        publicPath: '/',
+        chunkFilename: 'js/[id].chunk.js'
     },
     devServer: {
         disableHostCheck: true,
@@ -36,6 +41,35 @@ module.exports = {
             Pages: `${srcPath}/pages`,
         },
     },
+    devtool: 'inline-source-map',
+    cache: true,
+    debug: true,
+    https: true,
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: `js/common.js`
+        }),
+        new webpack.DefinePlugin({
+            // global vars added here must also be added to .eslintrc
+            'process.env.NODE_ENV': JSON.stringify('development'),
+            'HTTPS': false,
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.NoErrorsPlugin(),
+        new HtmlWebpackPlugin({
+            favicon: path.resolve(srcPath, 'favicon.ico'),
+            filename: 'www.html',
+            chunks: ['app', 'common'],
+            template: path.resolve(srcPath, 'website/www.html')
+        }),
+        new webpack.ProvidePlugin({
+            'Promise': 'imports?this=>global!exports?global.Promise!es6-promise',
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        }),
+        new webpack.optimize.MinChunkSizePlugin({minChunkSize: 10000}),
+        new ExtractTextPlugin('css/[name].css')
+    ],
     module: {
         loaders: [
             {test: /\.(json)$/, include: srcPath, loader: 'json-loader'},

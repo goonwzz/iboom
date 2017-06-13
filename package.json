@@ -61,6 +61,7 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "history": "^4.6.1",
+    "html-webpack-plugin": "^2.28.0",
     "react": "^15.5.4"
   }
 }
