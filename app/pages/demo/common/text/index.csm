@@ -1,0 +1,11 @@
+.question {
+  position: relative;
+
+  .textAnswer {
+    display: flex;
+    margin-top: 10px;
+    .textAnswerInput {
+      flex: 1
+    }
+  }
+}

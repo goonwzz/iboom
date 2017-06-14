@@ -38,6 +38,7 @@ module.exports = {
             Containers: `${srcPath}/container`,
             Styles: `${srcPath}/styles`,
             Pages: `${srcPath}/pages`,
+            Mock: `${srcPath}/mock`,
         },
     },
     cache: true,
@@ -79,12 +80,12 @@ module.exports = {
             {
                 test: /\.csm$/,
                 //css-modules name=文件名 local--样式名 hash:base64:8 hash8
-                loader: ExtractTextPlugin.extract('style-loader','css-loader?modules&localIdentName=[name]--[local]--[hash:base64:8]!less-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&localIdentName=[name]--[local]--[hash:base64:8]!less-loader')
             },
             {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style-loader',  'css-loader!less-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
 
             }
         ]
