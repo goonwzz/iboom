@@ -40,8 +40,23 @@ class Demo extends React.Component {
     }
 
     _submit() {
+        const {questions}= this.state.data
 
-        console.log(this.state.data)
+        var getAnswer = (data = []) => {
+            let answers = []
+            data.map((item, index) => {
+                var userAnswer = {}
+                if (item.type == 'custom') {
+                    userAnswer[`Q${index + 1}`] = getAnswer(item.answers)
+                } else {
+                    userAnswer[`Q${index + 1}`] = item.userAnswer
+                }
+
+                answers.push(userAnswer)
+            })
+            return answers
+        }
+        console.log(JSON.stringify(getAnswer(questions)))
     }
 
 }

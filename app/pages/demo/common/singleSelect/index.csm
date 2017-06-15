@@ -1,0 +1,12 @@
+.question {
+  position: relative;
+
+  .select {
+    margin-right: 10px;
+  }
+  :global {
+    .ant-radio-wrapper {
+      padding-top: 10px;
+    }
+  }
+}

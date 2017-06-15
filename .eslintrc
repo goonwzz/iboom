@@ -19,7 +19,9 @@
       1,
       "single"
     ],
-    "semi": [0],
+    "semi": [
+      0
+    ],
     "no-undef": 1,
     "global-strict": 0,
     "no-extra-semi": 1,

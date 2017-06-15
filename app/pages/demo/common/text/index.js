@@ -23,8 +23,8 @@ class Text extends React.Component {
             <div className={styles.textAnswer}>
                 <span>答：</span>
                 <div className={styles.textAnswerInput}>
-                    <Input type="textarea" value={data.answer} onChange={(e) => {
-                        data.answer = e.target.value;
+                    <Input type="textarea" value={data.userAnswer} onChange={(e) => {
+                        data.userAnswer = e.target.value;
                         this.setState(this.state)
                     }}/>
                 </div>
