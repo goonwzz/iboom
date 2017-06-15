@@ -1,8 +1,8 @@
 module.exports = {
-    path: 'test',
+    path: 'zh',
     getComponent(location, cb) {
         require.ensure([], (require) => {
-            cb(null, require('Pages/test').default)
+            cb(null, require('Pages/zh').default)
         })
     },
 }
